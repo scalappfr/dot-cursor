@@ -166,23 +166,3 @@ function setupEventListeners(cursor, options) {
     });
   });
 }
-
-/** -------------------------------------- Ajouter ici tous les params ------------------------------------------*/
-
-const options = [
-  {
-    selector: "#paragraph", // exemples selectors (h1 , #id , .class , ...)
-    enlarged: true, // true , false
-    // cursor: "auto", // auto , pointer , move , grab , ...
-    color: "hsl(39, 100%, 50%)", // 'red' , '#49306B' , 'rgb(255, 239, 71)', 'hsl(39, 100%, 50%)', ...
-  },
-  {
-    selector: "button",
-    cursor: "auto",
-  },
-];
-
-// Trigger this function only when all content are loaded
-document.addEventListener("DOMContentLoaded", function () {
-  cursor(options);
-});
