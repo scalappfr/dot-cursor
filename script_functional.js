@@ -142,6 +142,7 @@ function elementHoverEffect(cursor, options) {
     }
   });
 
+  // Reset the cursor if there should be no changes to the custom cursor
   if (!matchElement) resetCursor(cursor);
 }
 
