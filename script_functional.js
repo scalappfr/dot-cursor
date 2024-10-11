@@ -74,6 +74,12 @@ function setupBaseEventListener(cursor, options) {
     triggerEnlarged(cursor);
     elementHoverEffect(cursor, options);
   });
+
+  // Hide the custom cursor on element drag
+  document.addEventListener("drag", () => {
+    cursor.cursorVisible = false;
+    triggerVisibility(cursor);
+  });
 }
 
 // Function that will make the outline follow the dot
@@ -118,6 +124,13 @@ function elementHoverEffect(cursor, options) {
   // If there are no element hovered then break the function
   if (!hoveredElement) return;
 
+  // Hide the custom cursor whenever the client cursor is visible
+  if (hoveredElement.style.cursor && hoveredElement.style.cursor !== "none") {
+    matchElement = true;
+    cursor.cursorVisible = false;
+    triggerVisibility(cursor);
+  }
+
   // Setup all eventListener that will trigger all users options
   options?.forEach((option) => {
     if (hoveredElement.matches(option.selector)) {
@@ -142,7 +155,6 @@ function elementHoverEffect(cursor, options) {
     }
   });
 
-  // Reset the cursor if there should be no changes to the custom cursor
   if (!matchElement) resetCursor(cursor);
 }
 
