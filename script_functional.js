@@ -124,16 +124,9 @@ function elementHoverEffect(cursor, options) {
   // If there are no element hovered then break the function
   if (!hoveredElement) return;
 
-  // Hide the custom cursor whenever the client cursor is visible
-  if (hoveredElement.style.cursor && hoveredElement.style.cursor !== "none") {
-    matchElement = true;
-    cursor.cursorVisible = false;
-    triggerVisibility(cursor);
-  }
-
   // Setup all eventListener that will trigger all users options
   options?.forEach((option) => {
-    if (hoveredElement.matches(option.selector)) {
+    if (hoveredElement.closest(option.selector)) {
       matchElement = true;
 
       // Add enlarged effect
